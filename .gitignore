@@ -1,0 +1,112 @@
+# Java-related files
+*.class
+*.jar
+*.war
+*.ear
+
+# Bytecode intermediate files
+*.class
+*.dex
+
+# Logs
+*.log
+*.tmp
+*.out
+
+# Package Files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.gz
+
+# Maven directories
+.mvn/
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Gradle directories
+.gradle/
+build/
+.gradle/
+gradle-app.plugin
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# NetBeans specific
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nblibraries/
+
+# Eclipse specific
+.classpath
+.project
+.settings/
+
+# Intellij IDEA specific
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VSCode specific
+.vscode/
+*.code-workspace
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Backup files created by editors
+*.bak
+*~
+*.swp
+*.swo
+
+# Workspace-specific generated files
+*.log
+*.tmp
+*.pid
+
+# IDE-specific auto-generated configuration
+.idea/
+*.iml
+*.iws
+
+# Ignore all build and target folders in subprojects
+**/target/
+**/build/
+
+# Ignore user-specific Gradle settings
+.gradle/
+gradle-app.plugin
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# Ignore npm related files
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ignore JUnit test reports
+test-results/
+test-output/
+
+# Ignore any temporary files
+*.tmp
+*.bak
+~$*
+
+# Ignore lock files and package manager files
+package-lock.json
+yarn.lock
+
