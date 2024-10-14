@@ -1,4 +1,7 @@
 import com.trainings.model.Car;
+import com.trainings.model.CarId;
+import com.trainings.model.Fruit;
+import com.trainings.model.Truck;
 import jakarta.persistence.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,19 +16,23 @@ public class Main {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("formation");
         EntityManager em = emf.createEntityManager();
-        EntityManager em1 = emf.createEntityManager();
-        Car car = new Car(1, "Peugeot", "Verte");
+        Car car1 = new Car(new CarId("Peugeot", "Bleu"), true);
+        Car car2 = new Car(new CarId("Peugeot", "Verte"), true);
 
+        Fruit f = new Fruit(50);
+        Fruit f2 = new Fruit(60);
 
         em.getTransaction().begin();
-        em.persist(car);
+        em.persist(car1);
+        em.persist(car2);
+
         em.getTransaction().commit();
 
-        TypedQuery<Car> query = em1.createQuery("FROM Car", Car.class);
+        TypedQuery<Car> query = em.createQuery("FROM Car", Car.class);
         List<Car> cars = query.getResultList();
 
-        for (Car car1 : cars) {
-            System.out.println(car1.getBrand());
+        for (Car car : cars) {
+            System.out.println(car.getId());
         }
 
         em.close();
