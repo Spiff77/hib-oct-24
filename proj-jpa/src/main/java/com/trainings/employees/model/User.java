@@ -1,4 +1,4 @@
-package com.trainings.model.employee;
+package com.trainings.employees.model;
 
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;

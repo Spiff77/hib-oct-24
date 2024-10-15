@@ -1,4 +1,4 @@
-package com.trainings.model.employee;
+package com.trainings.employees.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
