@@ -5,16 +5,36 @@ import jakarta.persistence.*;
 import org.hibernate.type.YesNoConverter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
-@SecondaryTable(name="car_options")
-public class Car implements Serializable {
-
-    @EmbeddedId
-    private CarId id;
+@SecondaryTable(name="car_options", pkJoinColumns={
+        @PrimaryKeyJoinColumn(name="a"),
+        @PrimaryKeyJoinColumn(name="b")
+})
+@DiscriminatorValue("c")
+public class Car extends Vehicle implements Serializable {
 
     @Embedded
     private Address addressRegistration;
+
+    @OneToMany(mappedBy = "car")
+    private List<Seat> seats = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name="eng_id")
+    private Engine engine;
+
+    public Car(CarId id, Engine engine, boolean isWorking) {
+        super(id);
+        this.engine = engine;
+        this.isWorking = isWorking;
+    }
+
+    public Car() {
+    }
 
     @Convert(converter = YesNoConverter.class)
     private boolean isWorking;
@@ -28,21 +48,15 @@ public class Car implements Serializable {
     @Column(table="car_options")
     private String option3;
 
-    public Car(CarId id, boolean isWorking) {
-        this.id = id;
-        this.isWorking = isWorking;
+    @ElementCollection
+    private Set<Passenger> passengers;
+
+    public Engine getEngine() {
+        return engine;
     }
 
-    public Car() {
-
-    }
-
-    public CarId getId() {
-        return id;
-    }
-
-    public void setId(CarId id) {
-        this.id = id;
+    public void setEngine(Engine engine) {
+        this.engine = engine;
     }
 
     public boolean isWorking() {
@@ -83,5 +97,29 @@ public class Car implements Serializable {
 
     public void setOption3(String option3) {
         this.option3 = option3;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
+    }
+
+    public Set<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(Set<Passenger> passengers) {
+        this.passengers = passengers;
+    }
+
+    public Set<Owner> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(Set<Owner> owners) {
+        this.owners = owners;
     }
 }
