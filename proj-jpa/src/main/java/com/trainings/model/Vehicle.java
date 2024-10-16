@@ -10,10 +10,13 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 public  class Vehicle implements Serializable {
 
+    public static final String F_OWNERS = "owners";
+
+
     @EmbeddedId
     private CarId id;
 
-    @ManyToMany(mappedBy = "carsOwned", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "carsOwned", fetch = FetchType.LAZY)
     Set<Owner> owners = new HashSet<>();
 
     public Vehicle() {

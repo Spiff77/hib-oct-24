@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @Cacheable
 public class Computer  implements Serializable {
+
     @EmbeddedId
     private ComputerId id;
 

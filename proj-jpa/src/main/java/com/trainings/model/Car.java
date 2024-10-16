@@ -20,6 +20,7 @@ import java.util.Set;
 @DiscriminatorValue("c")
 public class Car extends Vehicle implements Serializable {
 
+
     @Embedded
     private Address addressRegistration;
 
