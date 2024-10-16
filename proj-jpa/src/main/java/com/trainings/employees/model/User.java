@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 @Entity
-
 public class User extends Person  implements Serializable {
 
     @Convert(converter = org.hibernate.type.YesNoConverter.class)

@@ -13,7 +13,7 @@ public  class Vehicle implements Serializable {
     @EmbeddedId
     private CarId id;
 
-    @ManyToMany(mappedBy = "carsOwned")
+    @ManyToMany(mappedBy = "carsOwned", fetch = FetchType.EAGER)
     Set<Owner> owners = new HashSet<>();
 
     public Vehicle() {

@@ -14,6 +14,9 @@ import java.util.Set;
         @PrimaryKeyJoinColumn(name="a"),
         @PrimaryKeyJoinColumn(name="b")
 })
+@NamedQueries({
+        @NamedQuery(name = "car.findAllByColor", query = "from Car c WHERE c.id.color = :color")
+})
 @DiscriminatorValue("c")
 public class Car extends Vehicle implements Serializable {
 

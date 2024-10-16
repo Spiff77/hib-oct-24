@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Person  implements Serializable {
 
     @Id
